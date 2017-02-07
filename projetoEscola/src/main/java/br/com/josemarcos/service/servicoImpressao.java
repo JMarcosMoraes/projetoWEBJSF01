@@ -92,6 +92,7 @@ public class servicoImpressao {
 			linha = "#";
 			for (j = 0; j < i; j++) {
 				linha = "###" + linha + "###";
+				
 			}
 			for (j = 0; j < lados - i; j++) {
 				linha = "::::::" + linha + "::::::";
