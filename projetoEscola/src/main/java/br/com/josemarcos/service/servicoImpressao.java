@@ -22,6 +22,7 @@ public class servicoImpressao {
 
 	public static void main(String[] args) {
 		losango();
+		losango2(); 
 	}
 
 	public void montaDiamante() {
@@ -79,35 +80,44 @@ public class servicoImpressao {
 
 	public static void losango() {
 
-		// TODO Auto-generated method stub
+		 for (int i = 1; i < 10; i += 2) {
+		      for (int j = 0; j < 9 - i / 2; j++)
+		        System.out.print(":");
 
-		// comprimento do lado
-		int lados = 5;
+		      for (int j = 0; j < i; j++)
+		        System.out.print("*");
 
-		// Funcionais
-		int i = 0, j = 0;
-		String linha;
+		      System.out.print("\n");
+		    }
 
-		for (i = 0; i < lados; i++) {
-			linha = "#";
-			for (j = 0; j < i; j++) {
-				linha = "###" + linha + "###";
+		    for (int i = 7; i > 0; i -= 2) {
+		      for (int j = 0; j < 9 - i / 2; j++)
+		        System.out.print(":");
+
+		      for (int j = 0; j < i; j++)
+		        System.out.print("*");
+
+		      System.out.print("\n");
+		    }
+	}
+	
+	public static void losango2() {
+		int n = 4;
+		for (int i = -n; i <= n; i++) {
+			for (int j = -n; j <= n; j++) {
+				System.out.print(":");
 			}
-			for (j = 0; j < lados - i; j++) {
-				linha = "::::::" + linha + "::::::";
-				System.out.println(linha);
+			for (int j = -n; j <= n; j++) {
+				if (Math.abs(i) + Math.abs(j) <= n)
+					System.out.print("###");
+				else
+					System.out.print(":::");
 			}
-			//System.out.println(linha);
+			for (int j = -n ; j <= n; j++) {
+				System.out.print(":");
+			}
+			System.out.println();
 		}
-		for (i = lados - 2; i >= 0; i--) {
-			linha = "#";
-			for (j = 0; j < i; j++) {
-				linha = "###" + linha + "###";
-			}
-			for (j = 0; j < lados - i; j++) {
-				linha = "::::::" + linha + "::::::";
-			}
-			System.out.println(linha);
-		}
+		
 	}
 }
