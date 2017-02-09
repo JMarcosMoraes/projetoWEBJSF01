@@ -24,8 +24,8 @@ import javax.inject.Inject;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import br.com.josemarcos.model.Member;
-import br.com.josemarcos.service.MemberRegistration;
+import br.com.josemarcos.model.Aluno;
+import br.com.josemarcos.service.EscolaService;
 import br.com.josemarcos.util.Resources;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -35,32 +35,31 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
-public class MemberRegistrationTest {
+public class AlunoTest {
     @Deployment
     public static Archive<?> createTestArchive() {
         return ShrinkWrap.create(WebArchive.class, "test.war")
-                .addClasses(Member.class, MemberRegistration.class, Resources.class)
+                .addClasses(Aluno.class, EscolaService.class, Resources.class)
                 .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-                // Deploy our test datasource
                 .addAsWebInfResource("test-ds.xml");
     }
 
     @Inject
-    MemberRegistration memberRegistration;
+    EscolaService escolaService;
 
     @Inject
     Logger log;
 
     @Test
     public void testRegister() throws Exception {
-        Member newMember = new Member();
-        newMember.setName("Jane Doe");
-        newMember.setEmail("jane@mailinator.com");
-        newMember.setPhoneNumber("2125551234");
-        memberRegistration.register(newMember);
-        assertNotNull(newMember.getId());
-        log.info(newMember.getName() + " was persisted with id " + newMember.getId());
+        Aluno aluno = new Aluno();
+        aluno.setNome("Jose Marcos");
+        aluno.setEmail("josemarcosmoraes@gmail.com");
+        aluno.setNumeroTelefone("986481111"); 
+        escolaService.register(aluno);
+        assertNotNull(aluno.getId());
+        log.info(aluno.getNome() + " was persisted with id " + aluno.getId());
     }
 
 }
