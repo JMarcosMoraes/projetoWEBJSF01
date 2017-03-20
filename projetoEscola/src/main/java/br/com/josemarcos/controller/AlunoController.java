@@ -11,6 +11,10 @@ import javax.inject.Named;
 import br.com.josemarcos.model.Aluno;
 import br.com.josemarcos.service.EscolaService;
 
+/*
+ * @Version 01
+ */
+
 @Model
 public class AlunoController {
 
