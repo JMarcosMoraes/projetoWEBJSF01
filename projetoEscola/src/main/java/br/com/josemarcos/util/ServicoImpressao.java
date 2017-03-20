@@ -14,7 +14,7 @@ import java.util.List;
 public class ServicoImpressao {
 	public static void main(String[] args) {
 		List<Integer> listaLados = Arrays.asList(5, 7, 11, 13);
-		listaLados.forEach(n -> diamante(n));
+	//	listaLados.forEach(n -> diamante(n));
 	}
 
 	public static void diamante(int n) {
